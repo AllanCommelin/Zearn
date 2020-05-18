@@ -15,10 +15,12 @@ class CreateStudentsessionsTable extends Migration
     {
         Schema::create('studentsessions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('session_id');
+            $table->foreignId('session_id')->constrained();
             $table->foreignId('student_id');
-            $table->float('student_mark');
+            $table->float('student_mark')->nullable();
             $table->timestamps();
+
+            $table->foreign('student_id')->references('id')->on('users');
         });
     }
 
