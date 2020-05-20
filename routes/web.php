@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/* --------------------------- SESSION CONTROLLER --------------------------- */
+
+Route::get('/lesson/{lesson}', 'ProfessorController@single')->name('professor.single');
+Route::post('/lesson/{lesson}/session/student-session/{studentSession}', 'ProfessorController@handleMark')->name('professor.handle_mark');
+Route::post('/lesson/{lesson}/session/{session}', 'ProfessorController@handleReport')->name('professor.handle_report');
