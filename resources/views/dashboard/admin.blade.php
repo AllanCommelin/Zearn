@@ -61,7 +61,7 @@
                                     @endswitch
                                 </td>
                                 <td>
-                                    <a href="edit/{{$user->id}}" role="button" class="text-white btn btn-primary">Modifier</a>
+                                    <a href="edit/user/{{$user->id}}" role="button" class="text-white btn btn-primary">Modifier</a>
                                     <form method="POST" action="edit/user/{{ $user->id }}" class="d-inline">
                                         @method('delete')
                                         @csrf
@@ -90,7 +90,7 @@
                             <tr>
                                 <td>{{ $lesson->name }}</td>
                                 <td>
-                                    <a role="button" class="text-white btn btn-primary">Modifier</a>
+                                    <a href="edit/lesson/{{ $lesson->id }}" role="button" class="text-white btn btn-primary">Modifier</a>
                                     <a role="button" class="text-white btn btn-danger">Supprimer</a>
                                 </td>
                             </tr>

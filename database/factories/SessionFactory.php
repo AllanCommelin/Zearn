@@ -13,7 +13,7 @@ $factory->define(Session::class, function (Faker $faker) {
     $completed = ($start_datetime < new DateTime());
     return [
         'lesson_id' => factory(Lesson::class),
-        'report' => $faker->realText(),
+        'report' => ($completed)?$faker->realText():'',
         'nb_hour' => $faker->time(),
         'nb_classroom' => $faker->numberBetween(0,999),
         'start_datetime' =>$start_datetime,
