@@ -31,7 +31,7 @@ class HomeController extends Controller
             case 'professor':
                 return view('dashboard/professor');
             case 'admin':
-                return view('dashboard/admin');
+                return redirect()->route('home_admin');
         }
     }
 }

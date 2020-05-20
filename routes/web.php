@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Admin routes
+Route::get('/admin/home', 'AdminController@index')->name('home_admin');
+Route::get('/admin/edit/{user}', 'AdminController@editUser');
+Route::put('/admin/edit/user/{user}', 'AdminController@updateUser');
+Route::delete('/admin/edit/user/{user}', 'AdminController@deleteUser');
