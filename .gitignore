@@ -1,4 +1,6 @@
+/.env
+/vendor/
+/public/css/
+/public/js/
+/.idea/
 /node_modules
-/vendor
-.env
-.env.example
