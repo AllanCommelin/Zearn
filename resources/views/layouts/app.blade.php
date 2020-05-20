@@ -50,6 +50,16 @@
                             @endif
                         @else
                             <li class="nav-item">
+                                <a href="{{ route('homeStudent') }}" class="nav-item nav-link text-capitalize">
+                                    Explorer les formations
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('studentSessions') }}" class="nav-item nav-link text-capitalize">
+                                    Mes sessions
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <span class="nav-item nav-link text-capitalize">
                                     {{ Auth::user()->roleToFr() }} :
                                 </span>
