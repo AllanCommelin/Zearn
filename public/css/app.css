@@ -10947,8 +10947,32 @@ a.text-dark:focus {
   text-transform: uppercase;
 }
 
+.single input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.single input:focus::-moz-placeholder {
+  opacity: 0;
+}
+
+.single input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+
+.single input:focus::-ms-input-placeholder {
+  opacity: 0;
+}
+
+.single input:focus::placeholder {
+  opacity: 0;
+}
+
 .single .input-mark {
   text-align: center;
+}
+
+.single .notification {
+  display: block;
 }
 
 .single__title {

@@ -37,9 +37,10 @@
                                             @foreach ($past_session->students as $student_session)
                                                 <li class="list-group-item d-flex justify-content-between align-items-center {{ $loop->first ?: 'mt-2' }}">
                                                     <span>{{ $student_session->student->first_name }} {{ $student_session->student->last_name }}</span>
-                                                    <form class="form-inline" action="{{ route('professor.handle_mark', ['lesson' => $lesson->id, 'studentSession' => $student_session->id]) }}" method="post">
+                                                    <form class="form-inline js-form-mark" action="{{ route('professor.handle_mark', ['lesson' => $lesson->id, 'studentSession' => $student_session->id]) }}" method="post">
                                                         @csrf
 
+                                                        <small style="display: none;" class="pb-2 text-success notification">La note a bien été mise à jour.</small>
                                                         <div class="form-group mx-sm-3 mb-2">
                                                             <label for="mark-{{ $student_session->id }}" class="sr-only">NOTE</label>
                                                             <input type="text" class="form-control input-mark" name="mark-{{ $student_session->id }}" id="mark-{{ $student_session->id }}" placeholder="{{ is_null($student_session->student_mark) ? 'NOTE' : $student_session->student_mark . '/20' }}">
@@ -53,9 +54,10 @@
                                 </div>
                                 <div class="collapse col-12 mt-3" id="report-{{ $past_session->id }}">
                                     <div class="card card-body">
-                                        <form action="{{ route('professor.handle_report', ['lesson' => $lesson->id, 'session' => $past_session->id]) }}" method="post">
+                                        <form class="js-form-report" action="{{ route('professor.handle_report', ['lesson' => $lesson->id, 'session' => $past_session->id]) }}" method="post">
                                             @csrf
 
+                                            <small style="display: none;" class="pb-2 text-success notification">Le compte-rendu a bien été mis à jour.</small>
                                             <div class="form-group mb-2">
                                                 <textarea class="form-control" name="session-report-{{ $past_session->id }}" id="exampleFormControlTextarea1" rows="9">{{ empty($past_session->report) ? 'Ajouter un compte-rendu...' : $past_session->report }}</textarea>
                                             </div>

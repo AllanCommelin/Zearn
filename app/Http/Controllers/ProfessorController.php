@@ -6,6 +6,7 @@ use App\Lesson;
 use App\Session;
 use App\StudentSession;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProfessorController extends Controller
 {
@@ -33,29 +34,30 @@ class ProfessorController extends Controller
         ]);
     }
 
-    public function handleMark(Lesson $lesson, StudentSession $studentSession)	
+    public function handleMark($lesson, $studentSessionParam)	
     {
+        $studentSession = StudentSession::find($studentSessionParam);
         $markName = 'mark-' . $studentSession->id;
         $newMark = request()->all()[$markName];
 
         $studentSession->student_mark = $newMark;
         $studentSession->save();
 
-        return redirect()->route('professor.single', [
-            'lesson' => $lesson->id
-        ]);
+        $studentMark = $studentSession->student_mark < 10 ? '0' . $studentSession->student_mark .'/20' : $studentSession->student_mark . '/20';
+
+        return new Response($studentMark, '200');
     }
 
-    public function handleReport(Lesson $lesson, Session $session)	
+    public function handleReport($lesson, $sessionParam)	
     {
+        $session = Session::find($sessionParam);
+
         $reportName = 'session-report-' . $session->id;
         $newReport = request()->all()[$reportName];
 
         $session->report = $newReport;
         $session->save();
 
-        return redirect()->route('professor.single', [
-            'lesson' => $lesson->id
-        ]);
+        return new Response($session->report, '200');
     }
 }
