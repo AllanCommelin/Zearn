@@ -34,8 +34,12 @@ Route::get('/student/lesson/{lesson}', 'StudentController@lessonSessions')->name
 Route::post('/student/session/subscribe', 'StudentController@sessionSubscribe')->name('sessionSubscribe');
 Route::delete('/student/session/unsubscribe/{id}', 'StudentController@sessionUnsubscribe')->name('sessionUnsubscribe');
 
-/* --------------------------- SESSION CONTROLLER --------------------------- */
-
+/*
+ |
+ | Professor Controller Routes
+ |
+ */
+Route::get('/lesson', 'ProfessorController@index')->name('professor.index');
 Route::get('/lesson/{lesson}', 'ProfessorController@single')->name('professor.single');
 Route::post('/lesson/{lesson}/session/student-session/{studentSession}', 'ProfessorController@handleMark')->name('professor.handle_mark');
-Rout
+Route::post('/lesson/{lesson}/session/{session}', 'ProfessorController@handleReport')->name('professor.handle_report');

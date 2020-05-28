@@ -30,7 +30,7 @@ class HomeController extends Controller
             case 'student':
                 return redirect()->action('StudentController@homeStudent');
             case 'professor':
-                return view('dashboard/professor');
+                return redirect()->action('ProfessorController@index');
             case 'admin':
                 return view('dashboard/admin');
         }

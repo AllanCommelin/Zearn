@@ -6,8 +6,8 @@
         <h1 class="col-12 col-md-6 single__title">{{ $lesson->name }}</h1>
     </div>
 
-    <div class="col d-flex align-items-start flex-column single__slots">
-        <div class="col-12 col-md-8 controls">
+    <div class="col d-flex align-items-center flex-column single__slots">
+        <div class="col-12 col-md-8 controls text-center">
             <button class="btn btn-secondary col-6 col-md-5 py-3" type="button" data-toggle="collapse" data-target="#pastSessions" aria-expanded="false" aria-controls="pastSessions">
                 créneaux passées
             </button>

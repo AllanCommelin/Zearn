@@ -6,11 +6,19 @@ use App\Lesson;
 use App\Session;
 use App\StudentSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProfessorController extends Controller
 {
-    public function single(Lesson $lesson)	
+    public function index()
+    {
+        return view('lesson.index', [
+            'lessons' => Lesson::where('professor_id', Auth::user()->id)->paginate(15),
+        ]);
+    }
+
+    public function single(Lesson $lesson)
     {
         $sessions = $lesson->sessions;
         $pastSessions = [];
@@ -34,7 +42,7 @@ class ProfessorController extends Controller
         ]);
     }
 
-    public function handleMark($lesson, $studentSessionParam)	
+    public function handleMark($lesson, $studentSessionParam)
     {
         $studentSession = StudentSession::find($studentSessionParam);
         $markName = 'mark-' . $studentSession->id;
@@ -48,7 +56,7 @@ class ProfessorController extends Controller
         return new Response($studentMark, '200');
     }
 
-    public function handleReport($lesson, $sessionParam)	
+    public function handleReport($lesson, $sessionParam)
     {
         $session = Session::find($sessionParam);
 
