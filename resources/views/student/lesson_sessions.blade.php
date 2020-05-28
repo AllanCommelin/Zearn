@@ -24,7 +24,9 @@
                                     <span class="card-link">Salle : {{ $session->nb_classroom }}</span><br>
                                     <span class="card-link">Place : {{ count($session->students) }}/20</span>
                                 </p>
-                                @if (in_array($session->id, $sessions_sub))
+                                @if($session->start_datetime < \Carbon\Carbon::now())
+                                    <span>Terminée</span>
+                                @elseif (in_array($session->id, $sessions_sub))
                                     <form action="{{ route('sessionUnsubscribe', $session->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
