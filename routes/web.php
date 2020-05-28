@@ -33,3 +33,9 @@ Route::get('/student/sessions', 'StudentController@studentSessions')->name('stud
 Route::get('/student/lesson/{lesson}', 'StudentController@lessonSessions')->name('lessonSessions');
 Route::post('/student/session/subscribe', 'StudentController@sessionSubscribe')->name('sessionSubscribe');
 Route::delete('/student/session/unsubscribe/{id}', 'StudentController@sessionUnsubscribe')->name('sessionUnsubscribe');
+
+/* --------------------------- SESSION CONTROLLER --------------------------- */
+
+Route::get('/lesson/{lesson}', 'ProfessorController@single')->name('professor.single');
+Route::post('/lesson/{lesson}/session/student-session/{studentSession}', 'ProfessorController@handleMark')->name('professor.handle_mark');
+Rout

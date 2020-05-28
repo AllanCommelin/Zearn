@@ -37227,6 +37227,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./main */ "./resources/js/main.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37274,6 +37276,62 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/main.js":
+/*!******************************!*\
+  !*** ./resources/js/main.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(window).on('load', function () {
+  if ($('.single').length > 0) {
+    var formsMark = $('.js-form-mark');
+    var formsReport = $('.js-form-report');
+
+    if (formsMark.length > 0) {
+      formsMark.each(function () {
+        $(this).on('submit', function (e) {
+          e.preventDefault();
+          $.ajax({
+            url: $(this).attr('action'),
+            method: 'post',
+            data: $(e.target).serialize(),
+            success: function success(data) {
+              $(e.target).find('input[type="text"]').val(data);
+              $(e.target).find('.notification').slideDown(300);
+              setTimeout(function () {
+                $(e.target).find('.notification').slideUp(300);
+              }, 3000);
+            }
+          });
+        });
+      });
+    }
+
+    if (formsReport.length > 0) {
+      formsReport.each(function () {
+        $(this).on('submit', function (e) {
+          e.preventDefault();
+          $.ajax({
+            url: $(this).attr('action'),
+            method: 'post',
+            data: $(e.target).serialize(),
+            success: function success(data) {
+              $(e.target).find('textarea').val(data);
+              $(e.target).find('.notification').slideDown(300);
+              setTimeout(function () {
+                $(e.target).find('.notification').slideUp(300);
+              }, 3000);
+            }
+          });
+        });
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -37292,8 +37350,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/allancommelin/Documents/Lab/Zearn/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/allancommelin/Documents/Lab/Zearn/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/theo_mackowiak/ECV/M1-DEV/UML-PHP/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/theo_mackowiak/ECV/M1-DEV/UML-PHP/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
