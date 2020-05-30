@@ -24,11 +24,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Admin routes
 Route::get('/admin/home', 'AdminController@index')->name('home_admin');
 Route::get('/admin/edit/user/{user}', 'AdminController@editUser');
-Route::put('/admin/edit/user/{user}', 'AdminController@updateUser');
-Route::delete('/admin/edit/user/{user}', 'AdminController@deleteUser');
+Route::put('/admin/edit/user/{user}', 'AdminController@updateUser')->name('update_user');
+Route::delete('/admin/edit/user/{user}', 'AdminController@deleteUser')->name('delete_user');
 Route::get('/admin/edit/lesson/{lesson}', 'AdminController@editLesson');
 Route::put('/admin/edit/lesson/{lesson}', 'AdminController@updateLesson');
 Route::post('/admin/session', 'AdminController@createSession')->name('create_session');
+Route::delete('/admin/lesson/{lesson}', 'AdminController@deleteLesson')->name('delete_lesson');
 
 /*
  |

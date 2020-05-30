@@ -11,10 +11,9 @@
             @endif
             <p class="h6">Dashboard Administrateur</p>
             <p class="h1">Bienvenue {{ Auth::user()->first_name }}</p>
-
-            @if (session('deleteUserSuccess'))
+            @if (session('successMsg'))
                 <div class="alert alert-success alert-dismissible" role="alert">
-                    {{ session('deleteUserSuccess') }}
+                    {{ session('successMsg') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -91,7 +90,11 @@
                                 <td>{{ $lesson->name }}</td>
                                 <td>
                                     <a href="edit/lesson/{{ $lesson->id }}" role="button" class="text-white btn btn-primary">Modifier</a>
-                                    <a role="button" class="text-white btn btn-danger">Supprimer</a>
+                                    <form method="POST" action="{{ route('delete_lesson', ['lesson' => $lesson]) }}" class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <input type="submit" class="btn btn-danger" value="Supprimer">
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

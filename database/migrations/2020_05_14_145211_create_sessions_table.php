@@ -15,7 +15,7 @@ class CreateSessionsTable extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lesson_id')->constrained();
+            $table->foreignId('lesson_id');
             $table->string('report')->nullable();
             $table->time('nb_hour');
             $table->integer('nb_classroom');
@@ -23,6 +23,8 @@ class CreateSessionsTable extends Migration
             $table->dateTime('end_datetime');
             $table->boolean('completed')->default(false);
             $table->timestamps();
+
+            $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
         });
     }
 

@@ -21,7 +21,7 @@
                     @endif
                 <div class="card mt-5">
                     <div class="card-body">
-                        <form action="user/{{ $user->id }}" method="POST">
+                        <form action="{{ route('update_user', ['user' => $user]) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -57,11 +57,11 @@
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-primary">Enregistrer</button>
-                            <form method="POST" action="user/{{ $user->id }}">
-                                @method('delete')
-                                @csrf
-                                <input type="submit" class="btn btn-danger" value="Supprimer">
-                            </form>
+                        </form>
+                        <form method="POST" action="{{ route('delete_user', ['user' => $user]) }}">
+                            @method('delete')
+                            @csrf
+                            <input type="submit" class="btn btn-danger" value="Supprimer">
                         </form>
                     </div>
                 </div>

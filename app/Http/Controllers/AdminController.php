@@ -9,6 +9,8 @@ use App\Lesson;
 use App\Session;
 use App\StudentSession;
 use App\User;
+use Exception;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,9 +27,9 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show Admin's application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function index()
     {
@@ -38,9 +40,9 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Edit a User.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function editUser(User $user)
     {
@@ -48,7 +50,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Update a User.
      *
      * @param UpdateUserRequest $request
      * @param User $user
@@ -66,24 +68,23 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Delete a User.
      *
      * @param User $user
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
     public function deleteUser(User $user)
     {
-        StudentSession::where('student_id', $user->id)->delete();
         $user->delete();
-        return redirect('admin/home')->with('deleteUserSuccess', 'Utilisateur Supprimé !');
+        return redirect('admin/home')->with('successMsg', 'Utilisateur Supprimé !');
     }
 
     /**
-     * Show the application dashboard.
+     * Edit a Lesson.
      *
      * @param Lesson $lesson
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function editLesson(Lesson $lesson)
     {
@@ -97,11 +98,11 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Update a Lesson.
      *
      * @param UpdateLessonRequest $request
      * @param Lesson $lesson
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function updateLesson(UpdateLessonRequest $request, Lesson $lesson)
     {
@@ -115,9 +116,8 @@ class AdminController extends Controller
     /**
      * Create Session.
      *
-     * @param UpdateLessonRequest $request
-     * @param Lesson $lesson
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @param AdminCreateSession $request
+     * @return Renderable
      */
     public function createSession(AdminCreateSession $request)
     {
@@ -127,5 +127,18 @@ class AdminController extends Controller
         Session::create($validated);
 
         return redirect()->back()->with('successMsg', 'Créneau créé !');
+    }
+
+    /**
+     * Delete Lesson.
+     *
+     * @param Lesson $lesson
+     * @return void
+     * @throws Exception
+     */
+    public function deleteLesson(Lesson $lesson)
+    {
+        $lesson->delete();
+        return redirect('admin/home')->with('successMsg', 'Formation supprimée !');
     }
 }
