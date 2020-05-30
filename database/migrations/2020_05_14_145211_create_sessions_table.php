@@ -16,12 +16,12 @@ class CreateSessionsTable extends Migration
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('lesson_id')->constrained();
-            $table->string('report');
+            $table->string('report')->nullable();
             $table->time('nb_hour');
             $table->integer('nb_classroom');
             $table->dateTime('start_datetime');
             $table->dateTime('end_datetime');
-            $table->boolean('completed');
+            $table->boolean('completed')->default(false);
             $table->timestamps();
         });
     }

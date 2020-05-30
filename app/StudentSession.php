@@ -26,10 +26,11 @@ class StudentSession extends Model
 
     /**
      * Get sessions
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function sessions()
     {
-        return $this->hasMany('App\Session');
+        return $this->belongsTo('App\Session');
     }
+
 }

@@ -48,7 +48,9 @@
                 </div>
 
                 <p class="h3 mt-5">Créneaux</p>
-
+                    <button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#exampleModal">
+                        Ajouter un créneau
+                    </button>
                     <table class="table table-hover mt-2">
                         <thead>
                         <tr>
@@ -65,7 +67,7 @@
                                 <td>{{ DateTime::createFromFormat('Y-m-d H:i:s',$session->start_datetime)->format('d-m-Y') }}</td>
                                 <td>{{ DateTime::createFromFormat('Y-m-d H:i:s',$session->start_datetime)->format('H:i:s').'-'.DateTime::createFromFormat('Y-m-d H:i:s',$session->end_datetime)->format('H:i:s') }}</td>
                                 <td>{{ count($session->students) }}</td>
-                                <td>{{ $session->nb_classroom }}{{ $session->completed }} </td>
+                                <td>{{ $session->nb_classroom }}</td>
                                 <td>
                                     @if($session->completed)
                                         <button
@@ -86,6 +88,54 @@
                     <div class="d-flex justify-content-center">
                         {{ $sessions->links() }}
                     </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ route('create_session') }}" method="POST">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <input type="text" hidden name="lesson_id" value="{{ $lesson->id }}">
+                                        <div class="form-group">
+                                            <label for="start_datetime">Date Début</label>
+                                            <input
+                                                    type="datetime-local"
+                                                    class="@error('start_datetime') is-invalid @enderror form-control"
+                                                    id="start_datetime"
+                                                    name="start_datetime"
+                                                    aria-describedby="Date Début"
+                                                    placeholder="Date de début"
+                                            >
+                                            @error('start_datetime')
+                                            <div class="mt-1 alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="end_datetime">Date de fin</label>
+                                            <input type="datetime-local" class="@error('end_datetime') is-invalid @enderror form-control" id="end_datetime" name="end_datetime" aria-describedby="Date de fin" placeholder="Date de fin">
+                                            @error('end_datetime')
+                                            <div class="mt-1 alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nb_classroom">Numéro de la salle</label>
+                                            <input type="text" class="@error('NbClassroom') is-invalid @enderror form-control" id="nb_classroom" name="nb_classroom" aria-describedby="Numéro de salle" placeholder="Numéro de la salle">
+                                            @error('nb_classroom')
+                                            <div class="mt-1 alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <script>
                         $(document).ready(function() {
                             $('[data-toggle="popover"]').popover({
@@ -93,6 +143,8 @@
                                 trigger: 'focus'
                             });
                         });
+
+
                     </script>
             </div>
         </div>

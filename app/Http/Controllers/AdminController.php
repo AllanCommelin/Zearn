@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminCreateSession;
 use App\Http\Requests\UpdateLessonRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Lesson;
@@ -109,5 +110,22 @@ class AdminController extends Controller
             'professor_id' => $request->input('Professor'),
         ]);
         return redirect()->back()->with('successMsg', 'Formation modifiée !');
+    }
+
+    /**
+     * Create Session.
+     *
+     * @param UpdateLessonRequest $request
+     * @param Lesson $lesson
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function createSession(AdminCreateSession $request)
+    {
+        $nb_hour = Session::calculateNbHour($request->input('start_datetime'), $request->input('end_datetime'));
+        $validated = $request->validated();
+        $validated['nb_hour'] = $nb_hour;
+        Session::create($validated);
+
+        return redirect()->back()->with('successMsg', 'Créneau créé !');
     }
 }
