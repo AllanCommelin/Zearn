@@ -10,7 +10,7 @@ class StudentSession extends Model
 
     protected $fillable = [
         'id',
-        'student _id',
+        'student_id',
         'session_id',
         'student_mark',
     ];
@@ -25,12 +25,11 @@ class StudentSession extends Model
     }
 
     /**
-     * Get sessions
+     * Get session
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function sessions()
+    public function session()
     {
         return $this->belongsTo('App\Session');
     }
-
 }

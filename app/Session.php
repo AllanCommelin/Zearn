@@ -37,6 +37,15 @@ class Session extends Model
         return $this->belongsTo('App\User', 'professor_id');
     }
 
+    /**
+     * Get lesson of session
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function lesson()
+    {
+        return $this->belongsTo('App\Lesson', 'lesson_id');
+    }
+
     public static function calculateNbHour($start_datetime, $end_datetime)
     {
         $start_hour = \DateTime::createFromFormat('Y-m-d\TG:i', $start_datetime);

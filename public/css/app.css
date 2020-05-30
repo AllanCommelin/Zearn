@@ -10933,3 +10933,65 @@ a.text-dark:focus {
   }
 }
 
+/* -------------------------------------------------------------------------- */
+
+/*                                    STYLE                                   */
+
+/* -------------------------------------------------------------------------- */
+
+.single {
+  margin-top: 50px;
+}
+
+.single button {
+  text-transform: uppercase;
+}
+
+.single input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.single input:focus::-moz-placeholder {
+  opacity: 0;
+}
+
+.single input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+
+.single input:focus::-ms-input-placeholder {
+  opacity: 0;
+}
+
+.single input:focus::placeholder {
+  opacity: 0;
+}
+
+.single .input-mark {
+  text-align: center;
+}
+
+.single .notification {
+  display: block;
+}
+
+.single__title {
+  text-align: center;
+  border-bottom: solid 2px #000;
+  padding-bottom: 20px;
+}
+
+.single__slots .controls button:last-child {
+  margin-left: 15px;
+}
+
+@media all and (max-width: 768px) {
+  .single__slots .controls button:last-child {
+    margin-left: 0;
+  }
+}
+
+.single__slots__timeslots .list-timeslots .card-body .list-group-item span {
+  text-transform: uppercase;
+}
+

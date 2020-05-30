@@ -49,6 +49,24 @@
                                 </li>
                             @endif
                         @else
+                            @if(Auth::user()->role === 'student')
+                                <li class="nav-item">
+                                    <a href="{{ route('homeStudent') }}" class="nav-item nav-link text-capitalize">
+                                        Explorer les formations
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('studentSessions') }}" class="nav-item nav-link text-capitalize">
+                                        Mes sessions
+                                    </a>
+                                </li>
+                            @elseif(Auth::user()->role === 'professor')
+                                <li class="nav-item">
+                                    <a href="{{ route('professor.index') }}" class="nav-item nav-link text-capitalize">
+                                        Mes formations
+                                    </a>
+                                </li>
+                            @endif
                             <li class="nav-item">
                                 <span class="nav-item nav-link text-capitalize">
                                     {{ Auth::user()->roleToFr() }} :

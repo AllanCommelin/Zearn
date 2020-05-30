@@ -1,0 +1,63 @@
+.w1-3 {
+    width: calc((100% / 3) - 2rem);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.single {
+    margin-top: 50px;
+
+    button {
+        text-transform: uppercase;
+    }
+
+    input:focus {
+        &::placeholder {
+            opacity: 0;
+        }
+    }
+
+    .input-mark {
+        text-align: center;
+    }
+
+    .notification {
+        display: block;
+    }
+
+    &__title {
+        text-align: center;
+        border-bottom: solid 2px black;
+        padding-bottom: 20px;
+    }
+
+    &__slots {
+        .controls {
+            button {
+                &:last-child {
+                    margin-left: 15px;
+
+                    @media all and (max-width: 768px) {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+
+        &__timeslots {
+            .list-timeslots {
+                .card-body {
+                    .list-group {
+                        &-item {
+                            span {
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
