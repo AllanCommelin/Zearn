@@ -1,3 +1,93 @@
+$color-red: #cb3a3b;
+$color-light-black: #1b1e21;
+$color-black: #0f1215;
+
+.navbar {
+    * {
+        font-family: "Roboto", "Nunito", sans-serif;
+    }
+    .navbar-brand {
+        font-weight: bolder;
+        color: $color-red !important;
+    }
+
+    .nav-item {
+        .nav-link {
+            font-weight: normal;
+            text-transform: none !important;
+            color: $color-light-black !important;
+
+            &:hover {
+                color: $color-red !important;
+                font-weight: bolder;
+            }
+        }
+    }
+}
+
+.z-home-page {
+    margin-top: -1.5rem !important;
+    margin-bottom: -1.5rem !important;
+
+    .z-container {
+        position: relative;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+
+        &:before {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            content: '';
+            z-index: 10;
+            background-color: rgba(33, 27, 27, 0.72);
+        }
+
+        h1, h2 {
+            z-index: 20;
+            font-family: "Roboto", sans-serif;
+        }
+
+        h1 {
+            font-weight: bolder;
+            font-size: 7rem;
+            color: $color-red;
+
+        }
+        h2 {
+            color: white;
+            font-weight: normal;
+            font-size: 4rem;
+        }
+        div.buttons {
+            margin-top: 2rem;
+            z-index: 20;
+
+            .btn {
+                margin: 0 .5rem;
+            }
+
+            .z-btn-login, .z-btn-student, .z-btn-professor {
+                background-color: $color-red;
+                color: white;
+            }
+
+            .z-btn-register {
+                border-color: $color-red;
+                color: $color-red;
+            }
+        }
+    }
+}
+
 .w1-3 {
     width: calc((100% / 3) - 2rem);
 }
