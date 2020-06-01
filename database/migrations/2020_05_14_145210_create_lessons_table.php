@@ -15,15 +15,11 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lesson_id');
             $table->foreignId('professor_id');
-            $table->string('report');
-            $table->time('nb_hour');
-            $table->integer('nb_classroom');
-            $table->dateTime('start_datetime');
-            $table->dateTime('end_datetime');
-            $table->boolean('completed');
+            $table->string('name');
             $table->timestamps();
+
+            $table->foreign('professor_id')->references('id')->on('users');
         });
     }
 

@@ -17,8 +17,11 @@ class CreateStudentsessionsTable extends Migration
             $table->id();
             $table->foreignId('session_id');
             $table->foreignId('student_id');
-            $table->float('student_mark');
+            $table->float('student_mark')->nullable();
             $table->timestamps();
+
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade');
         });
     }
 
