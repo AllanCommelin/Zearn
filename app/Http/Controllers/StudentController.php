@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth.student');
+    }
+
     public function homeStudent()
     {
         $lessons = Lesson::with('sessions', 'professor')->paginate(15);

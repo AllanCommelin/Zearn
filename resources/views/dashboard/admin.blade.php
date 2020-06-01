@@ -33,6 +33,7 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="home-tab">
                     {{--USER TABLE--}}
+                    <a href="{{ route('create_user') }}" class="text-white btn btn-primary mt-5">Créer un utilisateur</a>
                     <table class="table table-hover mt-5">
                         <thead>
                         <tr>
@@ -77,6 +78,7 @@
                 </div>
                 <div class="tab-pane fade" id="formations" role="tabpanel" aria-labelledby="profile-tab">
                     {{--LESSON TABLE--}}
+                    <a href="{{ route('create_lesson') }}" class="text-white btn btn-primary mt-5">Créer une formation</a>
                     <table class="table table-hover mt-5">
                         <thead>
                         <tr>

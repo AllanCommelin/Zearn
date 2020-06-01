@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AdminCreateSession;
+use App\Http\Requests\StoreLessonRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateLessonRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Lesson;
 use App\Session;
-use App\StudentSession;
 use App\User;
 use Exception;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -37,6 +37,30 @@ class AdminController extends Controller
         $lessons = Lesson::paginate(15, '*', 'lesson_pages');
 
         return view('dashboard/admin')->with(['users' => $users, 'lessons' => $lessons]);
+    }
+
+    /**
+     * Create a User.
+     *
+     * @return Renderable
+     */
+    public function createUser()
+    {
+        return view('admin.create_user');
+    }
+
+    /**
+     * Store a User.
+     *
+     * @param StoreUserRequest $request
+     * @return Renderable
+     */
+    public function storeUser(StoreUserRequest $request)
+    {
+        $attributes = $request->validated();
+        $attributes['password'] = bcrypt('password');
+        User::create($attributes);
+        return redirect()->route('home_admin');
     }
 
     /**
@@ -79,6 +103,29 @@ class AdminController extends Controller
         $user->delete();
         return redirect('admin/home')->with('successMsg', 'Utilisateur Supprimé !');
     }
+
+    /**
+     * Create a Lesson.
+     *
+     * @return Renderable
+     */
+    public function createLesson()
+    {
+        return view('admin.create_lesson')->with(['professors' => User::whereRole('professor')->get()]);
+    }
+
+    /**
+     * Store a Lesson.
+     *
+     * @param StoreLessonRequest $request
+     * @return Renderable
+     */
+    public function storeLesson(StoreLessonRequest $request)
+    {
+        Lesson::create($request->validated());
+        return redirect()->route('home_admin');
+    }
+
 
     /**
      * Edit a Lesson.
