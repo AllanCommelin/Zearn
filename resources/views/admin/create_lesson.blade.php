@@ -34,7 +34,7 @@
                                 <div class="mt-1 alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="submit" class="btn btn-success">Enregistrer</button>
                         </form>
                     </div>
                 </div>

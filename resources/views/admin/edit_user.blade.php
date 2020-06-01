@@ -57,9 +57,9 @@
                                 <div class="mt-1 alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="submit" class="btn btn-success">Enregistrer</button>
                         </form>
-                        <form method="POST" action="{{ route('delete_user', ['user' => $user]) }}">
+                        <form class="mt-2" method="POST" action="{{ route('delete_user', ['user' => $user]) }}">
                             @method('delete')
                             @csrf
                             <input type="submit" class="btn btn-danger" value="Supprimer">

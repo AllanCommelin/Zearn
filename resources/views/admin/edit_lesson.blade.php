@@ -43,13 +43,13 @@
                                 <div class="mt-1 alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="submit" class="btn btn-success">Enregistrer</button>
                         </form>
                     </div>
                 </div>
 
                 <p class="h3 mt-5">Créneaux</p>
-                    <button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-success mb-5" data-toggle="modal" data-target="#exampleModal">
                         Ajouter un créneau
                     </button>
                     <table class="table table-hover mt-2">
@@ -131,7 +131,7 @@
                                             <div class="mt-1 alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                                        <button type="submit" class="btn btn-success">Sauvegarder</button>
                                     </div>
                                 </form>
                             </div>

@@ -33,7 +33,7 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="home-tab">
                     {{--USER TABLE--}}
-                    <a href="{{ route('create_user') }}" class="text-white btn btn-primary mt-5">Créer un utilisateur</a>
+                    <a href="{{ route('create_user') }}" class="text-white btn btn-success mt-5">Créer un utilisateur</a>
                     <table class="table table-hover mt-5">
                         <thead>
                         <tr>
@@ -61,7 +61,7 @@
                                     @endswitch
                                 </td>
                                 <td>
-                                    <a href="edit/user/{{$user->id}}" role="button" class="text-white btn btn-primary">Modifier</a>
+                                    <a href="edit/user/{{$user->id}}" role="button" class="text-white btn btn-success">Modifier</a>
                                     <form method="POST" action="edit/user/{{ $user->id }}" class="d-inline">
                                         @method('delete')
                                         @csrf
@@ -78,7 +78,7 @@
                 </div>
                 <div class="tab-pane fade" id="formations" role="tabpanel" aria-labelledby="profile-tab">
                     {{--LESSON TABLE--}}
-                    <a href="{{ route('create_lesson') }}" class="text-white btn btn-primary mt-5">Créer une formation</a>
+                    <a href="{{ route('create_lesson') }}" class="text-white btn btn-success mt-5">Créer une formation</a>
                     <table class="table table-hover mt-5">
                         <thead>
                         <tr>
@@ -91,7 +91,7 @@
                             <tr>
                                 <td>{{ $lesson->name }}</td>
                                 <td>
-                                    <a href="edit/lesson/{{ $lesson->id }}" role="button" class="text-white btn btn-primary">Modifier</a>
+                                    <a href="edit/lesson/{{ $lesson->id }}" role="button" class="text-white btn btn-success">Modifier</a>
                                     <form method="POST" action="{{ route('delete_lesson', ['lesson' => $lesson]) }}" class="d-inline">
                                         @method('delete')
                                         @csrf

@@ -66,6 +66,12 @@
                                         Mes formations
                                     </a>
                                 </li>
+                            @elseif(Auth::user()->role === 'admin')
+                                <li class="nav-item">
+                                    <a href="{{ route('home_admin') }}" class="nav-item nav-link text-capitalize">
+                                        Dashboard
+                                    </a>
+                                </li>
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
