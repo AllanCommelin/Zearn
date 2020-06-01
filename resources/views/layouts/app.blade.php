@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -41,29 +41,51 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <span class="nav-item nav-link text-capitalize">
-                                    {{ Auth::user()->roleToFr() }} :
-                                </span>
-                            </li>
+                            @if(Auth::user()->role === 'student')
+                                <li class="nav-item">
+                                    <a href="{{ route('homeStudent') }}" class="nav-item nav-link text-capitalize">
+                                        Explorer les formations
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('studentSessions') }}" class="nav-item nav-link text-capitalize">
+                                        Mes sessions
+                                    </a>
+                                </li>
+                            @elseif(Auth::user()->role === 'professor')
+                                <li class="nav-item">
+                                    <a href="{{ route('professor.index') }}" class="nav-item nav-link text-capitalize">
+                                        Mes formations
+                                    </a>
+                                </li>
+                            @elseif(Auth::user()->role === 'admin')
+                                <li class="nav-item">
+                                    <a href="{{ route('home_admin') }}" class="nav-item nav-link text-capitalize">
+                                        Dashboard
+                                    </a>
+                                </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->first_name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <span class="dropdown-item text-capitalize">
+                                        Status : {{ Auth::user()->roleToFr() }}
+                                    </span>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Déconnecter') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

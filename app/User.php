@@ -61,7 +61,7 @@ class User extends Authenticatable
      */
     public function studentsessions()
     {
-        return $this->role === 'student' ? $this->hasMany('App\StudentSession') : [];
+        return $this->role === 'student' ? $this->hasMany('App\StudentSession', 'student_id') : [];
     }
 
     public function roleToFr()

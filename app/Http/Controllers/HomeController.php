@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,11 +28,13 @@ class HomeController extends Controller
         switch (Auth::user()->role)
         {
             case 'student':
-                return view('dashboard/student');
+                return redirect()->action('StudentController@homeStudent');
             case 'professor':
-                return view('dashboard/professor');
+                return redirect()->action('ProfessorController@index');
             case 'admin':
-                return view('dashboard/admin');
+                return redirect()->route('home_admin');
         }
     }
+
+
 }
