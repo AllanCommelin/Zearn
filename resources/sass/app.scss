@@ -7,8 +7,14 @@
 // Zearn css
 @import 'zearn';
 
+
+$theme-colors: (
+    primary: #cb3a3b
+);
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
 
 // Font Awesome
 @import '~@fortawesome/fontawesome-free/scss/brands';
