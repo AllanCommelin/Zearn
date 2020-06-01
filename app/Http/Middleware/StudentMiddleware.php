@@ -15,7 +15,7 @@ class StudentMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->role != 'student')
+        if ($request->user()->role != 'student')
         {
             abort(401);
         }

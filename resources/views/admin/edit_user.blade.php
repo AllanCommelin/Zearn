@@ -9,6 +9,7 @@
                         {{ session('status') }}
                     </div>
                 @endif
+                <a href="{{ route('home_admin') }}">Accueil</a>
                 <p class="h6">Édition d'utilisateur</p>
                 <p class="h1">Modifier un utilisateur</p>
                     @if (session('successMsg'))

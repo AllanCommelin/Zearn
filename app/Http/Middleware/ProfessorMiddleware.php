@@ -15,7 +15,7 @@ class ProfessorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->role != 'professor')
+        if ($request->user()->role != 'professor')
         {
             abort(401);
         }

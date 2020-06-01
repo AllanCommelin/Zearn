@@ -18,7 +18,7 @@ class ProfessorController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth.professor');
+        $this->middleware(['auth','auth.professor']);
     }
 
     public function index()
