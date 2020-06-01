@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class StudentMiddleware
 {
@@ -15,7 +16,7 @@ class StudentMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user()->role != 'student')
+        if (Auth::user()->role != 'student')
         {
             abort(401);
         }

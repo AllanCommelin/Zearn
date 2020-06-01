@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class ProfessorMiddleware
 {
@@ -15,7 +16,7 @@ class ProfessorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user()->role != 'professor')
+        if (Auth::user()->role != 'professor')
         {
             abort(401);
         }
