@@ -9,8 +9,8 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <a href="{{ route('home_admin') }}">Accueil</a>
-                <p class="h6">Édition d'utilisateur</p>
+                <a href="{{ route('home_admin') }}"  class="btn-link text-black-50"><i class="fas fa-angle-left mr-1"></i>Retour</a>
+                <p class="h6 mt-2">Édition d'utilisateur</p>
                 <p class="h1">Modifier un utilisateur</p>
                     @if (session('successMsg'))
                         <div class="alert alert-success alert-dismissible" role="alert">

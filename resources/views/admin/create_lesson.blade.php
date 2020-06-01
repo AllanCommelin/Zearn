@@ -9,7 +9,8 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <p class="h6">Formation</p>
+                <a href="{{ route('home_admin') }}"  class="btn-link text-black-50"><i class="fas fa-angle-left mr-1"></i>Retour</a>
+                <p class="h6 mt-2">Formation</p>
                 <p class="h1">Créer une formation</p>
                 <div class="card mt-5">
                     <div class="card-body">

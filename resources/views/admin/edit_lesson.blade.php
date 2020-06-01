@@ -9,7 +9,8 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <p class="h6">Édition de formation</p>
+                <a href="{{ route('home_admin') }}"  class="btn-link text-black-50"><i class="fas fa-angle-left mr-1"></i>Retour</a>
+                <p class="h6 mt-2">Édition de formation</p>
                 <p class="h1">Modifier une formation</p>
                 @if (session('successMsg'))
                     <div class="alert alert-success alert-dismissible" role="alert">
