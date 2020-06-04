@@ -7,6 +7,9 @@
                 <h2 class="text-center text-uppercase">Formation</h2>
                 <h1 class="text-center text-uppercase">{{ $lesson->name }}</h1>
                 <hr>
+                <div class="col-12">
+                    <a class="btn btn-outline-info" href="{{ route('homeStudent') }}">Retour</a>
+                </div>
                @foreach ($sessions as $session)
                     @php setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1'); @endphp
                     <div class="card d-inline-block m-2 w1-3">
