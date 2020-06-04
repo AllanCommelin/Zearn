@@ -47,7 +47,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="Role">Example select</label>
+                                <label for="Role">Rôle</label>
                                 <select class="@error('Role') is-invalid @enderror form-control" id="Role" name="Role">
                                     <option @if($user->role === 'admin') selected @endif value="admin">Admin</option>
                                     <option @if($user->role === 'student') selected @endif value="student">Étudiant</option>
