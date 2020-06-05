@@ -15,7 +15,6 @@
                 créneaux à venir
             </button>
         </div>
-
         <div class="col-12 mt-4 single__slots__timeslots">
             <div class="collapse list-timeslots list-timeslots--past mb-4" id="pastSessions">
                 <div class="card card-body">

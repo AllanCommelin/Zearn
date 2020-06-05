@@ -15,7 +15,7 @@
                     <div class="card d-inline-block m-2 w1-3">
                         <div class="card-body">
                             <h4 class="h5 card-title font-weight-bolder pt-4">
-                                {{ \Carbon\Carbon::parse($session->start_datetime)->formatLocalized('%A %d %B %Y')  }}
+                                {{ \Carbon\Carbon::parse($session->start_datetime)->formatLocalized('%A %d %B %Y') }}
                             </h4>
                             <h5 class="h5 card-subtitle font-weight-bold mb-2 text-muted">
                                 {{ \Carbon\Carbon::parse($session->start_datetime)->formatLocalized('%H:%M') }}
